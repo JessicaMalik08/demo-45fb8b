@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Auto App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body class="p-4">
+    <div class="container">
+      <h1 id="title">Generated app</h1>
+      <p id="brief">Create a simple Flask app</p>
+      <div id="content">Loading...</div>
+    </div>
+    <script>
+      (function(){
+          const params = new URLSearchParams(location.search);
+          const url = params.get('url');
+          const content = document.getElementById('content');
+          if(url){
+              content.innerHTML = '<p>URL parameter: ' + url + '</p>';
+              if(url.match(/\.(png|jpg|jpeg|svg)$/i)){
+                  const img = document.createElement('img'); 
+                  img.src = url; 
+                  img.alt = 'user image'; 
+                  img.style.maxWidth='100%'; 
+                  content.appendChild(img);
+              }
+          } else {
+              content.textContent = 'No ?url provided — show default sample below if present.';
+          }
+      })();
+    </script>
+  </body>
+</html>
